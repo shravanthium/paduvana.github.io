@@ -1,526 +1,994 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paduvana Technologies | Modern Consulting Solutions</title>
-    <style>
-        :root {
-            --primary-color: #2B3A7E;
-            --primary-light: #3c4d99;
-            --secondary-color: #f8f9fa;
-            --text-color: #333;
-            --white: #ffffff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-        
-        body {
-            line-height: 1.6;
-            color: var(--text-color);
-            overflow-x: hidden;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--white);
-        }
-        
-        .logo span {
-            color: var(--white);
-            opacity: 0.9;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-        
-        .cta-button {
-            background-color: var(--white);
-            color: var(--primary-color);
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            transform: translateY(-2px);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            padding: 180px 0 100px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            top: -200px;
-            right: -200px;
-        }
-        
-        .hero-content {
-            max-width: 600px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-        
-        /* Why Work With Us Section */
-        .why-us {
-            padding: 100px 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-size: 36px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .section-header p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto;
-            color: #666;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(43, 58, 126, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .feature-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--primary-color);
-        }
-        
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        
-        /* Expertise Section */
-        .expertise {
-            padding: 100px 0;
-            background-color: var(--secondary-color);
-        }
-        
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-        
-        .expertise-card {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 8px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .expertise-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: var(--primary-color);
-        }
-        
-        .expertise-card h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        
-        .expertise-card ul {
-            list-style-type: none;
-        }
-        
-        .expertise-card ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .expertise-card ul li::before {
-            content: '•';
-            color: var(--primary-color);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-right: 10px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 60px 0 30px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .footer-about p {
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .footer-links h4 {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links ul {
-            list-style-type: none;
-        }
-        
-        .footer-links ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links ul li a {
-            color: var(--white);
-            opacity: 0.8;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links ul li a:hover {
-            opacity: 1;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            text-align: center;
-            opacity: 0.7;
-            font-size: 14px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .expertise-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paduvana Technologies — Technology Consulting</title>
+  <meta name="description" content="Paduvana Technologies is a technology consulting firm helping businesses transform through web, mobile, AI, cloud, and cybersecurity solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Brand indigo — extracted from logo */
+      --indigo:        #1a007e;
+      --indigo-dark:   #120059;
+      --indigo-deeper: #0d0040;
+      --indigo-mid:    #2d18a0;
+      --indigo-pale:   rgba(26, 0, 126, 0.07);
+      --indigo-border: rgba(26, 0, 126, 0.18);
+
+      --bg:            #ffffff;
+      --bg-alt:        #f6f6f9;
+      --bg-alt2:       #efeff5;
+      --border:        rgba(26, 0, 126, 0.08);
+      --border-mid:    rgba(26, 0, 126, 0.15);
+
+      --ink:           #0d0d1a;
+      --ink-mid:       #383550;
+      --ink-muted:     #7e7b99;
+      --ink-faint:     #b5b3cc;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 34px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a:hover { background: var(--bg-alt); color: var(--ink); }
+
+    .nav-cta {
+      background: var(--indigo) !important;
+      color: #fff !important;
+      font-weight: 500 !important;
+      padding: 9px 20px !important;
+      border-radius: 6px !important;
+      transition: background 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--indigo-mid) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background: var(--indigo-deeper);
+      overflow: hidden;
+    }
+
+    /* Background photo with indigo wash */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      opacity: 0.12;
+      filter: saturate(0.3);
+    }
+
+    /* Indigo mesh overlay */
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(45,24,160,0.6) 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 80%, rgba(18,0,89,0.8) 0%, transparent 60%);
+    }
+
+    /* Geometric accent line */
+    .hero-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      right: 38%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.08) 70%, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 130px 40px 110px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-left {}
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 28px;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 22px;
+      height: 1px;
+      background: rgba(255,255,255,0.4);
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .hero-sub {
+      font-size: 16.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.78;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--indigo);
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px 26px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn-white:hover { background: #e8e6f5; transform: translateY(-1px); }
+
+    .btn-ghost-white {
+      background: transparent;
+      color: rgba(255,255,255,0.65);
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 13px 24px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.18);
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-ghost-white:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+
+    /* Hero right — floating stat cards */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .hero-stat-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 22px 26px;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s;
+    }
+    .hero-stat-card:hover { background: rgba(255,255,255,0.08); }
+
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-num span { color: rgba(180,160,255,0.8); }
+
+    .hero-stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .outer {
+      width: 100%;
+    }
+
+    .section {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 18px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: var(--indigo);
+      border-radius: 2px;
+    }
+
+    .section-h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(30px, 3.2vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 580px;
+      margin-bottom: 16px;
+    }
+
+    .section-lead {
+      font-size: 16.5px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      max-width: 500px;
+      line-height: 1.75;
+      margin-bottom: 52px;
+    }
+
+    /* ── ABOUT ── */
+    .about-outer {
+      background: var(--bg);
+      padding: 96px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .pillar {
+      display: flex;
+      gap: 0;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .pillar-item {
+      background: var(--bg);
+      padding: 26px 28px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .pillar-item:hover { background: var(--indigo-pale); }
+
+    .pillar-icon {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 8px;
+      background: var(--indigo-pale);
+      border: 1px solid var(--indigo-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .pillar-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 5px;
+      letter-spacing: -0.01em;
+    }
+
+    .pillar-body {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    /* ── SERVICES ── */
+    .services-outer {
+      background: var(--indigo-deeper);
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-outer::before {
+      content: '';
+      position: absolute;
+      bottom: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(45,24,160,0.5) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .services-outer .section-tag { color: rgba(180,160,255,0.8); }
+    .services-outer .section-tag::before { background: rgba(180,160,255,0.6); }
+    .services-outer .section-h2 { color: #fff; }
+    .services-outer .section-lead { color: rgba(255,255,255,0.45); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.03);
+      padding: 36px 32px;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: rgba(180,160,255,0.4);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { background: rgba(255,255,255,0.07); }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+      margin-bottom: 18px;
+    }
+
+    .service-icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .service-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .service-body {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.7;
+    }
+
+    /* ── APPROACH ── */
+    .approach-outer {
+      background: var(--bg-alt);
+      padding: 96px 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 0;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: calc(12.5% + 18px);
+      right: calc(12.5% + 18px);
+      height: 1px;
+      background: var(--border-mid);
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step-bubble {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1.5px solid var(--indigo-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--indigo);
+      margin-bottom: 20px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step:hover .step-bubble {
+      background: var(--indigo);
+      border-color: var(--indigo);
+      color: #fff;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .step-body {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    /* ── WHY US ── */
+    .why-outer {
+      background: var(--bg);
+      padding: 96px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .why-card {
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .why-card:hover {
+      border-color: var(--indigo-border);
+      box-shadow: 0 4px 24px rgba(26,0,126,0.06);
+    }
+
+    .why-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--indigo);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .why-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .why-body {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    /* ── CTA ── */
+    .cta-outer {
+      background: var(--indigo);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-outer::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%);
+    }
+
+    .cta-outer::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: 5%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, transparent 65%);
+    }
+
+    .cta-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 96px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.18;
+      color: #fff;
+      letter-spacing: -0.02em;
+      max-width: 560px;
+    }
+
+    .cta-h2 em {
+      font-style: italic;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .cta-sub {
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      max-width: 440px;
+    }
+
+    .btn-white-solid {
+      background: #fff;
+      color: var(--indigo);
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 15px 30px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn-white-solid:hover { background: #e8e6f5; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--indigo-deeper);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo img { height: 26px; width: auto; }
+
+    .footer-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .hero-content { grid-template-columns: 1fr; gap: 48px; padding: 100px 40px 80px; }
+      .hero-right { flex-direction: row; flex-wrap: wrap; }
+      .hero-stat-card { flex: 1; min-width: 140px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .steps::before { display: none; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .hero-content { padding: 80px 20px 60px; }
+      .section { padding: 0 20px; }
+      .about-outer, .services-outer, .approach-outer, .why-outer { padding: 64px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .cta-inner { padding: 64px 20px; }
+      .footer-inner { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="container">
-        <div class="logo">Paduvana<span>Technologies</span></div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Services</a>
-            <a href="#">About</a>
-            <a href="#">Case Studies</a>
-            <a href="#">Contact</a>
-        </div>
-        <a href="#" class="cta-button">Get Started</a>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Transforming Businesses Through Strategic Innovation</h1>
-                <p>At Paduvana Technologies, we deliver cutting-edge consulting solutions that drive growth, efficiency, and digital transformation for forward-thinking companies.</p>
-                <a href="#" class="cta-button">Discover Our Solutions</a>
-            </div>
-        </div>
-    </section>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <img src="logo.png" alt="Paduvana Technologies" onerror="this.style.display='none'" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="https://forms.gle/bspzVvcUiLCnEywM8" target="_blank" class="nav-cta">Get in Touch</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Why Work With Us Section -->
-    <section class="why-us">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Work With Us</h2>
-                <p>We combine industry expertise with innovative thinking to deliver measurable results and lasting value.</p>
-            </div>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                        </svg>
-                    </div>
-                    <h3>Proven Expertise</h3>
-                    <p>Our team of seasoned consultants brings decades of combined experience across multiple industries, ensuring top-tier solutions tailored to your specific challenges.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" />
-                        </svg>
-                    </div>
-                    <h3>Innovative Approach</h3>
-                    <p>We leverage cutting-edge technologies and methodologies to drive innovation and deliver forward-thinking solutions that keep you ahead of the competition.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" />
-                        </svg>
-                    </div>
-                    <h3>Client-Centric Focus</h3>
-                    <p>We prioritize your success through collaborative partnerships, transparent communication, and a deep commitment to delivering tangible business value.</p>
-                </div>
-            </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-mesh"></div>
+    <div class="hero-line"></div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-label">Technology Consulting</div>
+        <h1 class="hero-h1">
+          Transforming business<br/><em>through technology</em><br/>that delivers.
+        </h1>
+        <p class="hero-sub">
+          We partner with organisations to build digital capabilities that drive real growth — through web, mobile, AI, cloud, and security.
+        </p>
+        <div class="hero-actions">
+          <a href="#services" class="btn-white">Explore Services</a>
+          <a href="https://forms.gle/bspzVvcUiLCnEywM8" target="_blank" class="btn-ghost-white">Speak with us</a>
         </div>
-    </section>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">6<span>+</span></div>
+          <div class="hero-stat-label">Practice areas</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">AI<span>↗</span></div>
+          <div class="hero-stat-label">Led transformation</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">Full</div>
+          <div class="hero-stat-label">Stack capability</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">24<span>/7</span></div>
+          <div class="hero-stat-label">Product support</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Our Expertise Section -->
-    <section class="expertise">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Expertise</h2>
-                <p>We specialize in a range of strategic consulting services designed to drive growth and operational excellence.</p>
-            </div>
-            <div class="expertise-grid">
-                <div class="expertise-card">
-                    <h3>Digital Transformation</h3>
-                    <ul>
-                        <li>Digital Strategy Development</li>
-                        <li>Technology Architecture Design</li>
-                        <li>Legacy System Modernization</li>
-                        <li>Cloud Migration & Implementation</li>
-                        <li>AI & Machine Learning Integration</li>
-                    </ul>
-                </div>
-                <div class="expertise-card">
-                    <h3>Business Strategy</h3>
-                    <ul>
-                        <li>Market Analysis & Positioning</li>
-                        <li>Growth Strategy Development</li>
-                        <li>Business Model Innovation</li>
-                        <li>Competitive Advantage Assessment</li>
-                        <li>Strategic Planning & Execution</li>
-                    </ul>
-                </div>
-                <div class="expertise-card">
-                    <h3>Technology Solutions</h3>
-                    <ul>
-                        <li>Enterprise Software Development</li>
-                        <li>IoT & Smart Systems Integration</li>
-                        <li>Cybersecurity & Risk Management</li>
-                        <li>Data Analytics & Business Intelligence</li>
-                        <li>Blockchain Implementation</li>
-                    </ul>
-                </div>
-                <div class="expertise-card">
-                    <h3>Operational Excellence</h3>
-                    <ul>
-                        <li>Process Optimization & Automation</li>
-                        <li>Supply Chain Transformation</li>
-                        <li>Quality Management Systems</li>
-                        <li>Cost Reduction Strategies</li>
-                        <li>Organizational Restructuring</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- ABOUT -->
+  <div id="about" class="about-outer">
+    <div class="section">
+      <div class="about-grid fade-up">
+        <div>
+          <div class="section-tag">Who we are</div>
+          <h2 class="section-h2">A consulting firm built for the age of intelligent technology.</h2>
+          <p class="section-lead" style="margin-bottom:0;">
+            Paduvana Technologies partners with businesses to design, build, and scale digital products. We combine deep technical expertise with strategic thinking — helping organisations move faster, compete smarter, and build for the long term.
+          </p>
         </div>
-    </section>
+        <div class="pillar">
+          <div class="pillar-item">
+            <div class="pillar-icon">🎯</div>
+            <div>
+              <div class="pillar-title">Outcome-focused</div>
+              <div class="pillar-body">We measure success by business impact, not lines of code or hours billed.</div>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">🤝</div>
+            <div>
+              <div class="pillar-title">True partnership</div>
+              <div class="pillar-body">We embed with your team, align to your goals, and stay accountable through delivery.</div>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">⚡</div>
+            <div>
+              <div class="pillar-title">Modern by default</div>
+              <div class="pillar-body">From AI to cloud-native infrastructure — we work with what's best for your problem.</div>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">🔍</div>
+            <div>
+              <div class="pillar-title">Rigorous thinking</div>
+              <div class="pillar-body">Strategy before execution — we ask the hard questions before building anything.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">PaduvanaTech</div>
-                    <p>We help businesses navigate digital transformation and strategic growth with innovative consulting solutions tailored to their unique challenges.</p>
-                    <div class="footer-social">
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Team</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News & Press</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Digital Transformation</a></li>
-                        <li><a href="#">Business Strategy</a></li>
-                        <li><a href="#">Technology Solutions</a></li>
-                        <li><a href="#">Operational Excellence</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Office Locations</a></li>
-                        <li><a href="#">Request a Consultation</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Paduvana Technologies. All rights reserved.</p>
-            </div>
+  <!-- SERVICES -->
+  <div id="services" class="services-outer">
+    <div class="section">
+      <div class="fade-up">
+        <div class="section-tag">What we do</div>
+        <h2 class="section-h2">Six practice areas. One integrated team.</h2>
+        <p class="section-lead">From initial strategy through to live systems and ongoing support — we cover the full technology stack.</p>
+      </div>
+      <div class="services-grid fade-up">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <span class="service-icon">🌐</span>
+          <div class="service-title">Web Application Development</div>
+          <p class="service-body">Custom, scalable, and secure web applications built with modern frameworks — designed for performance and built to grow with your business.</p>
         </div>
-    </footer>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <span class="service-icon">📱</span>
+          <div class="service-title">Mobile Application Development</div>
+          <p class="service-body">Intuitive iOS and Android applications that engage customers on the go — built natively or cross-platform depending on what your users need.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <span class="service-icon">🤖</span>
+          <div class="service-title">AI Enablement</div>
+          <p class="service-body">We help businesses harness artificial intelligence to automate processes, improve decision-making, and unlock deeper insight from their data.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <span class="service-icon">🛡️</span>
+          <div class="service-title">Product Support</div>
+          <p class="service-body">Dedicated support that keeps your applications at full performance — with proactive monitoring, rapid response, and continuous improvement.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <span class="service-icon">☁️</span>
+          <div class="service-title">Cloud Integration</div>
+          <p class="service-body">We architect and migrate your infrastructure to the cloud — optimising for scalability, cost efficiency, security, and operational excellence.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">06</div>
+          <span class="service-icon">🔒</span>
+          <div class="service-title">Cybersecurity Consulting</div>
+          <p class="service-body">Comprehensive security strategies to identify vulnerabilities, protect critical assets, and build a resilient posture against evolving threats.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPROACH -->
+  <div id="approach" class="approach-outer">
+    <div class="section">
+      <div class="fade-up">
+        <div class="section-tag">How we work</div>
+        <h2 class="section-h2">A structured approach to complex problems.</h2>
+        <p class="section-lead">Every engagement follows a disciplined methodology — from discovery through delivery and beyond.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-bubble">1</div>
+            <div class="step-title">Discover</div>
+            <p class="step-body">We immerse in your business context, understand constraints, and define what success looks like before writing a line of code.</p>
+          </div>
+          <div class="step">
+            <div class="step-bubble">2</div>
+            <div class="step-title">Design</div>
+            <p class="step-body">Architecture, UX, and technical design aligned early — so we build the right thing, not just build the thing right.</p>
+          </div>
+          <div class="step">
+            <div class="step-bubble">3</div>
+            <div class="step-title">Deliver</div>
+            <p class="step-body">Iterative delivery in short cycles with continuous stakeholder alignment — no surprises at launch.</p>
+          </div>
+          <div class="step">
+            <div class="step-bubble">4</div>
+            <div class="step-title">Evolve</div>
+            <p class="step-body">Post-launch, we remain a partner — monitoring, improving, and scaling as your business grows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <div class="why-outer">
+    <div class="section">
+      <div class="fade-up">
+        <div class="section-tag">Why Paduvana</div>
+        <h2 class="section-h2">Built different. By design.</h2>
+        <p class="section-lead">What separates a technology partner from a technology vendor.</p>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-num">→</div>
+            <div class="why-title">Strategy first</div>
+            <p class="why-body">We start with business problems, not technology solutions. The right answer isn't always the most complex one.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-num">→</div>
+            <div class="why-title">End-to-end ownership</div>
+            <p class="why-body">From concept to production and beyond — one team, full accountability, no handoff gaps.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-num">→</div>
+            <div class="why-title">AI-ready from day one</div>
+            <p class="why-body">Every solution we build is designed with AI augmentation in mind — not bolted on later as an afterthought.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-outer">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-h2">Ready to build something <em>that matters?</em></h2>
+        <p class="cta-sub">Tell us about your challenge. We'll respond within one business day.</p>
+      </div>
+      <a href="https://forms.gle/bspzVvcUiLCnEywM8" target="_blank" class="btn-white-solid">Start the conversation →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="Paduvana" onerror="this.style.display='none'" />
+        <span class="footer-copy">© <span id="yr"></span> Paduvana Technologies. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="https://forms.gle/bspzVvcUiLCnEywM8" target="_blank">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
