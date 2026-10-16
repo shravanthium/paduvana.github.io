@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Manrope:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/links.css"><link rel="icon" href="/logo.png">
+<title>Copy-Paste AI Prompts · Paduvana</title><meta name="description" content="The prompts from @paduvana.tech reels: the canary test, the 7-second resume fix, and 3 questions that make ChatGPT admit it's guessing."></head><body><main class="wrap">
+<a class="top" href="/ig"><img src="/logo.png" alt="Paduvana"><div><b>Paduvana Technologies</b><span>@paduvana.tech · AI you can actually trust</span></div></a>
+<span class="kicker">From the reels</span>
+<h1>Copy-paste <em>prompts</em></h1>
+<p class="lead">Works in ChatGPT, Gemini and Claude. Tap copy, paste, done.</p>
+
+<section class="card" id="canary"><span class="tag">CANARY</span><h2>Spot when AI starts hallucinating</h2><p class="q">Paste this at the start of a long chat.</p>
+<pre>For this whole conversation, begin every reply with 🐤 — no exceptions.</pre>
+<button class="copy">Copy</button>
+<p class="note">🐤 there → it's still following your instructions. 🐤 gone → stop trusting it. Start a new chat with a short summary of what matters.</p></section>
+
+<section class="card" id="resume"><span class="tag">RESUME</span><h2>Fix the part recruiters actually read</h2><p class="q">Paste your resume, then this.</p>
+<pre>Recruiters scan my resume for 7 seconds. Rewrite ONLY what they read first: my headline, my job titles, and the first bullet under each job. Make my biggest result impossible to miss. Use only my real numbers. Target role: [role].</pre>
+<button class="copy">Copy</button>
+<p class="note">Source for the 7 seconds: Ladders eye-tracking study, 2018.</p></section>
+
+<section class="card" id="guess"><span class="tag">GUESS</span><h2>Make ChatGPT admit it's guessing</h2><p class="q">Ask these after any confident answer.</p>
+<pre>1. Which parts of your answer are you least sure about? Rate each from 1 to 10.
+2. Give me a source for every fact. If you don't have one, say "not sure".
+3. Now argue against your own answer. Which side is stronger?</pre>
+<button class="copy">Copy</button></section>
+
+<div class="cta"><h3>Rolling AI out at work?</h3><p>Grab the free 4-gate checklist to get your AI pilot approved.</p><a href="/gates">Get the checklist →</a></div>
+<footer><a href="/ig">More free resources</a> · © Paduvana Technologies</footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{const t=b.previousElementSibling.innerText;try{await navigator.clipboard.writeText(t)}catch(e){const r=document.createRange();r.selectNodeContents(b.previousElementSibling);getSelection().removeAllRanges();getSelection().addRange(r);document.execCommand('copy')}b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent='Copy';b.classList.remove('done')},1800)}));
+</script></body></html>

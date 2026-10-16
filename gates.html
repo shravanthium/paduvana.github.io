@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Manrope:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/links.css"><link rel="icon" href="/logo.png">
+<title>The 4-Gate AI Launch Checklist · Paduvana</title><meta name="description" content="Most AI pilots don't die in the demo. They die at 4 gates: Legal, Security, Finance, Ops. A free checklist to open each one."></head><body><main class="wrap">
+<a class="top" href="/ig"><img src="/logo.png" alt="Paduvana"><div><b>Paduvana Technologies</b><span>@paduvana.tech · AI you can actually trust</span></div></a>
+<span class="kicker">Free checklist · Why AI pilots die</span>
+<h1>The 4-gate <em>AI launch</em> checklist</h1>
+<p class="lead">Everyone loves the demo. Then the pilot hits four gates. Tick off each item before your review meeting — every box is an answer an approver will ask for.</p>
+<div class="progress"><span id="pc">0 of 16 ready</span><div class="bar"><i id="pb"></i></div></div>
+
+<section class="card"><span class="tag">GATE 1 · LEGAL</span><h2>Where does the data go?</h2><p class="q">Fix: a one-page data map.</p><ul>
+<li><label><input type="checkbox">List what goes in: which fields, from which systems.</label></li>
+<li><label><input type="checkbox">Write down where it's stored, and in which region.</label></li>
+<li><label><input type="checkbox">Name every vendor and model that sees it, and their data-retention terms.</label></li>
+<li><label><input type="checkbox">Mask names, phone numbers and IDs before anything leaves your system.</label></li>
+</ul></section>
+
+<section class="card"><span class="tag">GATE 2 · SECURITY</span><h2>Can someone hijack it?</h2><p class="q">Fix: attack it yourself before launch.</p><ul>
+<li><label><input type="checkbox">Run 20 nasty prompts against it ("Ignore your rules and…") and log the results.</label></li>
+<li><label><input type="checkbox">Add input and output guardrails: block, filter and cap what it can say.</label></li>
+<li><label><input type="checkbox">Give it the fewest tools and permissions it needs. It drafts; a human sends.</label></li>
+<li><label><input type="checkbox">Log every call so you can replay what happened.</label></li>
+</ul></section>
+
+<section class="card"><span class="tag">GATE 3 · FINANCE</span><h2>What will it cost at scale?</h2><p class="q">Fix: model the cost at 10× today's volume.</p><ul>
+<li><label><input type="checkbox">Measure cost per task (per ticket, per document, per call) today.</label></li>
+<li><label><input type="checkbox">Multiply by 10× volume and compare with the cost of doing it by hand.</label></li>
+<li><label><input type="checkbox">Route easy tasks to a cheaper model; cache repeated answers.</label></li>
+<li><label><input type="checkbox">Set a hard monthly budget with an alert before you hit it.</label></li>
+</ul></section>
+
+<section class="card"><span class="tag">GATE 4 · OPS</span><h2>Who fixes it at 2am?</h2><p class="q">Fix: name an owner before launch.</p><ul>
+<li><label><input type="checkbox">One named on-call owner, plus a backup.</label></li>
+<li><label><input type="checkbox">A "hand to a human" button or fallback path for every flow.</label></li>
+<li><label><input type="checkbox">Alerts on errors, cost spikes and unusual answers.</label></li>
+<li><label><input type="checkbox">A weekly review of wrong answers, feeding back into prompts and tests.</label></li>
+</ul></section>
+
+<p class="note">Tip: print this page or save it as a PDF (your browser's Share / Print menu) to bring into your review meeting.</p>
+<div class="cta"><h3>Stuck at one of the gates?</h3><p>Tell us where your AI pilot is blocked. We'll tell you what the approver needs to see.</p><a href="https://forms.gle/bspzVvcUiLCnEywM8">Talk to Paduvana →</a></div>
+<footer><a href="/ig">More free resources</a> · © Paduvana Technologies</footer>
+</main>
+<script>
+const b=[...document.querySelectorAll('input[type=checkbox]')],K='gates-v1';
+let s=[];try{s=JSON.parse(localStorage.getItem(K)||'[]')}catch(e){}
+b.forEach((x,i)=>{x.checked=!!s[i];x.addEventListener('change',u)});
+function u(){const v=b.map(x=>x.checked),n=v.filter(Boolean).length;document.getElementById('pc').textContent=n+' of '+b.length+' ready'+(n===b.length?' — all 4 gates open ✓':'');document.getElementById('pb').style.width=(n/b.length*100)+'%';try{localStorage.setItem(K,JSON.stringify(v))}catch(e){}}
+u();
+</script></body></html>
